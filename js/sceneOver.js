@@ -9,10 +9,23 @@ class SceneOver extends Phaser.Scene {
     preload() {
         this.load.image("btn", "images/btn.png");
         this.load.image("kalja", "images/kaljaParticle.png");
+        this.load.audio("gameOver", "assets/audio/gameover.ogg");
     }
 
     create() {
 
+        this.music = this.sound.add("gameOver");
+
+        var musicConfig = {
+            mute: false,
+            volume: 10,
+            rate: 1,
+            detune: 0,
+            seek: 0,
+            loop: false,
+            delay: 0
+        }
+        this.music.play(musicConfig);
         var style = {
             color: "#fff",
             fontSize: 24

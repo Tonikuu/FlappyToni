@@ -1,3 +1,4 @@
+var music;
 class SceneMain extends Phaser.Scene {
     constructor() {
         super("SceneMain");
@@ -7,16 +8,31 @@ class SceneMain extends Phaser.Scene {
         this.load.image("toni", "images/toni.png");
         this.load.image("tausta", "images/bg.png");
         this.load.image("seinä", "images/wall.png");
+        this.load.audio("music", "assets/audio/tausta.ogg");
 
     }
 
+
+
     create() {
+        this.music = this.sound.add("music");
+
+        var musicConfig = {
+            mute: false,
+            volume: 10,
+            rate: 1,
+            detune: 0,
+            seek: 0,
+            loop: false,
+            delay: 0
+        }
+        this.music.play(musicConfig);
+
         //Tausta
         this.tausta = this.add.tileSprite(0, 0, 480, 640, "tausta");
         this.tausta.setOrigin(0);
         this.tausta.displayHeight = game.config.height;
         this.tausta.displayWidth = game.config.width;
-        
 
         //Toni
         this.toni = this.physics.add.sprite(70, game.config.height/2,"toni");
@@ -89,6 +105,7 @@ class SceneMain extends Phaser.Scene {
         this.wallTimer.destroy();
         this.seinä.setVelocityX(0);
         this.toni.velocityY = 0;
+        this.music.destroy();
        
 
         this.tweens.add ({
@@ -142,4 +159,5 @@ class SceneMain extends Phaser.Scene {
          if (this.isGameOver == false) {
         this.gameOver(); }
 }
+
 }
