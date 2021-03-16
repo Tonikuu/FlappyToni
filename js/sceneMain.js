@@ -8,7 +8,7 @@ class SceneMain extends Phaser.Scene {
         this.load.image("toni", "images/toni.png");
         this.load.image("tausta", "images/bg.png");
         this.load.image("seinä", "images/wall.png");
-        this.load.audio("music", "assets/audio/tausta.ogg");
+        this.load.audio("music", ["assets/audio/tausta.ogg", "assets/audio/tausta.mp3"]);
 
     }
 

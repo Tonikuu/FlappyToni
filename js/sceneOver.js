@@ -9,7 +9,7 @@ class SceneOver extends Phaser.Scene {
     preload() {
         this.load.image("btn", "images/btn.png");
         this.load.image("kalja", "images/kaljaParticle.png");
-        this.load.audio("gameOver", "assets/audio/gameover.ogg");
+        this.load.audio("gameOver", ["assets/audio/gameover.ogg", "assets/audio/gameover.mp3"]);
     }
 
     create() {
@@ -28,8 +28,8 @@ class SceneOver extends Phaser.Scene {
         this.music.play(musicConfig);
         var style = {
             color: "#fff",
-            fontSize: 24
-        };
+            fontSize: 24 
+       };
         var pointText = this.add.text(game.config.width/2, 50, "Pisteet",
          style).setOrigin(0.5);
 
